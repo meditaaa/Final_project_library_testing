@@ -1,0 +1,47 @@
+
+ https://www.klavb.lt
+
+
+ Test Cases 
+
+TS01 – Navigation & Header
+
+TC01 – Page loads without errors
+
+TC02 – Logo is visible
+
+TC03 – Clicking the logo redirects to the homepage
+
+TC04 – “Services” menu link works correctly
+
+TC05 – The heading “How to Become a Reader” is visible
+
+--------------------------------------------------------------
+TS02 – Content & Links
+
+TC06 – Main text “Reader Registration” is visible
+
+TC07 – The page contains a list structure (ul/ol > li)
+
+TC08 – The “Library Rules” link works correctly
+
+TC09 – The “Online Catalogue” link works correctly
+
+TC10 – Contact information is visible at the bottom of the page
+
+--------------------------------------------------------------
+ TS03 – Footer & Accessibility
+
+TC11 – Footer section is visible
+
+TC12 – “Contacts” link in the footer works correctly
+
+TC13 – Social media icons are visible
+
+TC14 – All images have alt attributes
+
+TC15 – Mobile view layout is responsive and content remains visible
+
+---
+
+
