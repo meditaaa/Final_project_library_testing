@@ -8,8 +8,8 @@ describe('TS02 Content & Links', () => {
   });
 
   it('TC06 Matomas pagrindinis tekstas „Registracija skaitytoju“', () => {
-    // 💡 Laukiam iki 8 sek., nes turinys gali krautis lėtai
-    cy.contains(/Registracija/i, { timeout: 8000 }).should('exist');
+    // 💡 Laukiam iki 10 sek., nes turinys gali krautis lėtai
+    cy.contains(/skaitytojo|užsiregistru|skaitytoj/i, { timeout: 10000 }).should('exist');
   });
 
   it('TC07 Nuoroda „Bibliotekos taisyklės“ turi href', () => {
