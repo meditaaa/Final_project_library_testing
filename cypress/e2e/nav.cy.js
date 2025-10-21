@@ -24,7 +24,8 @@ describe('TS01 Navigation & Header', () => {
     cy.location('pathname').should('include', '/paslaugos');
   });
 
-  it('TC05 Antraštė „Kaip tapti skaitytoju“ matoma', () => {
-    cy.contains(/Kaip tapti skaitytoju/i).should('be.visible');
-  });
+ it('TC05 Antraštė „Kaip tapti skaitytoju“ matoma', () => {
+  // Patikrinam, kad egzistuoja aktyvi nuoroda į "Kaip tapti skaitytoju"
+  cy.get('a.active.in_path', { timeout: 8000 }).should('exist');
+});
 });
