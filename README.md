@@ -42,6 +42,25 @@ All test cases are described in [testCases.md](./testCases.md)
 
 ## 🧱 Folder & File Structure
 
+library-testing-cypress/
+├─ cypress/
+│ ├─ e2e/
+│ │ ├─ nav.cy.js
+│ │ ├─ content.cy.js
+│ │ └─ footer.cy.js
+│ ├─ support/
+│ │ ├─ commands.js
+│ │ └─ e2e.js
+│ └─ fixtures/
+├─ .github/
+│ └─ workflows/
+│ └─ cypress.yml
+├─ testCases.md
+├─ README.md
+├─ package.json
+├─ cypress.config.js
+└─ package-lock.json
+
 ## Jira Project Setup
 
 This project includes a Jira board created for test management and sprint tracking.
