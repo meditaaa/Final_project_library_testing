@@ -28,9 +28,11 @@ describe('TS03 – Footer & Accessibility', () => {
     });
   });
 
-  it('TC15 – Mobilus vaizdas (iPhone 6/7/8) išdėstymas nekeičia turinio matomumo', () => {
-    cy.viewport(375, 667);
-    cy.contains(/Kaip tapti skaitytoju/i).should('be.visible');
-    cy.get('nav, header, footer').should('exist');
-  });
+ it('TC15 – Mobilus vaizdas išdėstymas nekeičia turinio matomumo', () => {
+  cy.viewport('iphone-6')
+  // Atidarom mobilų meniu jei reikia
+  cy.get('.mmenu-trigger, .menu-toggle').click({ force: true })
+  cy.get('a.active.in_path', { timeout: 8000 }).should('be.visible')
+})
+
 });

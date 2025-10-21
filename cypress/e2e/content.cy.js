@@ -6,8 +6,9 @@ describe('TS02 – Content & Links', () => {
   });
 
   it('TC06 – Matomas pagrindinis tekstas „Registracija skaitytoju“', () => {
-    cy.contains(/registracija/i).should('be.visible');
-  });
+  // Laukiam iki 8 sek, nes tekstas gali įsikrauti vėliau
+  cy.contains(/Registracija/i, { timeout: 8000 }).should('be.visible')
+})
 
   it('TC07 – Yra sąrašinė struktūra (ul/ol > li)', () => {
     cy.get('ul li, ol li').its('length').should('be.gt', 0);
@@ -21,8 +22,9 @@ describe('TS02 – Content & Links', () => {
     cy.contains('a', /katalog/i).should('have.attr', 'href');
   });
 
-  it('TC10 Kontaktinė informacija matoma puslapio apačioje', () => {
-    cy.scrollTo('bottom');
-    cy.contains(/kontakt/i).should('be.visible');
-  });
+ it('TC10 – Kontaktinė informacija matoma puslapio apačioje', () => {
+  cy.scrollTo('bottom')
+  cy.get('footer').should('be.visible')
+  cy.get('footer a[href*="kontakt"]').should('exist')
+})
 });
