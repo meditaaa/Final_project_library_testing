@@ -3,40 +3,31 @@
 ### 🔗 Website under test  
 **URL:** [https://www.klavb.lt](https://www.klavb.lt)
 
-## Project Overview
+---
+
+## 🧭 Project Overview
 
 This project is part of the **BIT Academy QA / Software Testing program**.  
-The purpose is to design and automate **end-to-end (E2E)** tests using **Cypress**, following a real-world QA workflow — including **manual exploratory testing**, **Jira test management**, **Git version control**, and **CI/CD pipeline integration** via **GitHub Actions**.
+The goal is to design and automate **end-to-end (E2E)** tests using **Cypress**, following a real-world QA workflow — including **exploratory testing**, **Jira test management**, **Git version control**, and **CI/CD pipeline integration** via **GitHub Actions**.
 
 The selected website section, *“Kaip tapti skaitytoju”* (How to become a reader), belongs to the **Klaipėda City Public Library** official portal.  
-The focus areas include:
-- Navigation and header buttons  
-- Main content and internal links  
+
+Main focus areas:
+- Navigation and header functionality  
+- Page content and internal links  
 - Footer visibility, contact info, and accessibility  
-
-## Objectives
-
-- ✅ Perform exploratory testing to identify key user flows.  
-- ✅ Define **3 Epics** and at least **15 Test Cases (TC)**.  
-- ✅ Document manual tests in `testCases.md`.  
-- ✅ Automate main E2E flows using Cypress (`.cy.js` files).  
-- ✅ Manage tasks and testing in Jira (Scrum project).  
-- ✅ Use Git and GitHub for version control.  
-- ✅ Implement CI/CD automation with GitHub Actions.  
 
 ---
 
-## QA Documentation Structure
+## 🎯 Objectives
 
-| Level | Purpose | Example |
-|--------|----------|----------|
-| **Epic** | High-level testing area / website section | EPIC-01 – Navigation & Header |
-| **Test Scenario (TS)** | Group of related test cases | TS01 – Header functionality |
-| **Test Case (TC)** | Single test with steps and expected results | TC02 – Header “Paremkite” button opens Support page |
-
-🟩 **Total:** 3 Epics → 3 Scenarios → 16 Test Cases  
-
-All test cases are described in [testCases.md](./testCases.md)
+- ✅ Perform exploratory testing to identify user flows  
+- ✅ Define **3 Epics** and **15+ Test Cases (TC)**  
+- ✅ Document manual test cases in `testCases.md`  
+- ✅ Automate core E2E flows using **Cypress** (`.cy.js` files)  
+- ✅ Manage test progress in **Jira (Scrum project)**  
+- ✅ Use **Git & GitHub** for version control  
+- ✅ Integrate **CI/CD pipeline** via **GitHub Actions**
 
 ---
 
@@ -45,44 +36,90 @@ All test cases are described in [testCases.md](./testCases.md)
 library-testing-cypress/
 ├─ cypress/
 │ ├─ e2e/
-│ │ ├─ nav.cy.js
-│ │ ├─ content.cy.js
-│ │ └─ footer.cy.js
+│ │ ├─ nav.cy.js # TS01 – Navigation & Header
+│ │ ├─ content.cy.js # TS02 – Content & Links
+│ │ └─ footer.cy.js # TS03 – Footer & Accessibility
 │ ├─ support/
 │ │ ├─ commands.js
 │ │ └─ e2e.js
 │ └─ fixtures/
 ├─ .github/
 │ └─ workflows/
-│ └─ cypress.yml
-├─ testCases.md
+│ └─ cypress.yml # GitHub Actions CI workflow
+├─ testCases.md # Manual test documentation
 ├─ README.md
 ├─ package.json
 ├─ cypress.config.js
 └─ package-lock.json
 
-## Jira Project Setup
 
-This project includes a Jira board created for test management and sprint tracking.
+---
 
-Project name: Library Testing – Cypress Project
+## 🗂️ Jira Project Setup
 
-Epics:
+**Project name:** Library Testing – Cypress Project  
+**Sprint:** LTCP Sprint 1  
+**Board type:** Scrum
 
-EPIC-01 – Navigation & Header
+### 🧩 Epics
 
-EPIC-02 – Content & Links
+| Epic ID | Description |
+|----------|-------------|
+| EPIC-01 | Navigation & Header |
+| EPIC-02 | Content & Links |
+| EPIC-03 | Footer & Accessibility |
 
-EPIC-03 – Footer & Accessibility
+📊 **Total test cases:** 15 (TC01–TC15)
 
-Total test cases: 16 (TC01–TC16)
+### Included Jira screenshots:
+- 🧾 *Backlog view* – before sprint start  
+- 🚀 *Board view* – after sprint start  
 
-Sprint: LTCP Sprint 1
+---
 
-Screenshots included:
+## ⚙️ CI/CD Integration (GitHub Actions)
 
-Backlog view (before sprint start)
+- Workflow file: `.github/workflows/cypress.yml`  
+- Trigger: Runs Cypress tests automatically on every push to `main`  
+- Output: Test report summary visible in GitHub Actions tab  
 
-Board view (after sprint start)
+---
 
-📅 Goal: To plan, organize, and track Cypress automation test coverage for the website https://www.klavb.lt
+## 🧪 Cypress Test Scenarios Summary
+
+| Scenario | Description | Test Cases |
+|-----------|--------------|-------------|
+| **TS01 – Navigation & Header** | Checks site navigation and header visibility | TC01–TC05 |
+| **TS02 – Content & Links** | Validates main content and internal links | TC06–TC10 |
+| **TS03 – Footer & Accessibility** | Ensures footer visibility and responsive layout | TC11–TC15 |
+
+---
+
+## 🧾 Example Test Case (from `nav.cy.js`)
+
+```js
+it('TC04 – Meniu „Paslaugos“ veikia', () => {
+  cy.visit('https://www.klavb.lt/');
+  cy.get('body').then(($body) => {
+    if ($body.find('#hamburger, .menu_toggle').length > 0) {
+      cy.get('#hamburger, .menu_toggle').click({ force: true });
+    }
+  });
+  cy.contains('a', 'Paslaugos', { timeout: 8000 })
+    .should('exist')
+    .click({ force: true });
+  cy.location('pathname', { timeout: 8000 })
+    .should('include', '/paslaugos');
+});
+ools & Technologies Used
+Category	Tools
+Test Automation	Cypress
+Test Management	Jira
+Version Control	Git & GitHub
+CI/CD	GitHub Actions
+Documentation	Markdown (.md)
+👤 Author
+
+Edita M.
+QA / Software Testing Student – BIT Academy
+2025
