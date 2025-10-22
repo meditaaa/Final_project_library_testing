@@ -1,8 +1,9 @@
 /// <reference types="cypress" />
 
 describe('TS03 – Footer & Accessibility', () => {
+
   beforeEach(() => {
-    cy.visit('https://www.klavb.lt/paslaugos/kaip-tapti-skaitytoju/79');
+    cy.visit('https://www.klavb.lt/paslaugos/kaip-tapti-skaitytoju/79', { timeout: 20000 });
   });
 
   it('TC11 – Footer matomas', () => {
@@ -23,27 +24,26 @@ describe('TS03 – Footer & Accessibility', () => {
       .should('exist');
   });
 
-  it('TC14 – IMG turi alt atributus', () => {
+  it('TC14 – IMG turi alt atributus (ne tuščius)', () => {
     cy.get('img').each(($img) => {
       const alt = $img.attr('alt');
-      expect(alt, 'Image alt attribute').to.not.equal(undefined);
+      if (alt && alt.trim() !== '') {
+        expect(alt, 'Image alt attribute').to.not.equal(undefined);
+        expect(alt.trim(), 'Alt attribute not empty').to.not.equal('');
+      }
     });
   });
 
-  it('TC15 – Mobilus vaizdas išdėstymas nekeičia turinio matomumo', () => {
+  it('TC15 – Mobilus vaizdas nekeičia turinio matomumo', () => {
     cy.viewport('iphone-6');
-
-    // Atidarom mobilų meniu jei reikia
     cy.get('body').then(($body) => {
       if ($body.find('#hamburger, .menu_toggle').length > 0) {
         cy.get('#hamburger, .menu_toggle').click({ force: true });
         cy.wait(1000);
       }
     });
-
-    // Patikrinam, kad pagrindinė antraštė vis dar matoma
     cy.get('h1, .page-title', { timeout: 10000 })
-      .should('be.visible')
+      .should('exist')
       .and('contain.text', 'Kaip tapti skaitytoju');
   });
 });

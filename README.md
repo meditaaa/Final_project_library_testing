@@ -118,8 +118,7 @@ Test Management	Jira
 Version Control	Git & GitHub
 CI/CD	GitHub Actions
 Documentation	Markdown (.md)
-👤 Author
 
-Edita M.
+Author
 QA / Software Testing Student – BIT Academy
 2025
