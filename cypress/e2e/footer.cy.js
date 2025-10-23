@@ -1,16 +1,16 @@
 /// <reference types="cypress" />
 
-describe('TS03 – Footer & Accessibility', () => {
+describe('TS03 Footer & Accessibility', () => {
 
   beforeEach(() => {
     cy.visit('https://www.klavb.lt/paslaugos/kaip-tapti-skaitytoju/79', { timeout: 20000 });
   });
 
-  it('TC11 – Footer matomas', () => {
+  it('TC11 Footer matomas', () => {
     cy.get('footer').scrollIntoView().should('be.visible');
   });
 
-  it('TC12 – Footer nuoroda „Kontaktai“ veikia', () => {
+  it('TC12 Footer nuoroda „Kontaktai“ veikia', () => {
     cy.get('footer').within(() => {
       cy.contains('a', /Kontakt/i)
         .should('have.attr', 'href')
@@ -18,13 +18,13 @@ describe('TS03 – Footer & Accessibility', () => {
     });
   });
 
-  it('TC13 – Socialinių tinklų ikonėlės (jei yra)', () => {
+  it('TC13 Socialinių tinklų ikonos (jei yra)', () => {
     cy.get('footer')
       .find('a[href*="facebook"], a[href*="instagram"]')
       .should('exist');
   });
 
-  it('TC14 – IMG turi alt atributus (ne tuščius)', () => {
+  it('TC14 IMG turi alt atributus (ne tuščius)', () => {
     cy.get('img').each(($img) => {
       const alt = $img.attr('alt');
       if (alt && alt.trim() !== '') {
@@ -34,7 +34,7 @@ describe('TS03 – Footer & Accessibility', () => {
     });
   });
 
-  it('TC15 – Mobilus vaizdas nekeičia turinio matomumo', () => {
+  it('TC15 Mobilus vaizdas nekeičia turinio matomumo', () => {
     cy.viewport('iphone-6');
     cy.get('body').then(($body) => {
       if ($body.find('#hamburger, .menu_toggle').length > 0) {
