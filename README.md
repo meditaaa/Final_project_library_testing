@@ -111,7 +111,7 @@ it('TC04 – Meniu „Paslaugos“ veikia', () => {
   cy.location('pathname', { timeout: 8000 })
     .should('include', '/paslaugos');
 });
-ools & Technologies Used
+Tools & Technologies Used
 Category	Tools
 Test Automation	Cypress
 Test Management	Jira
@@ -119,6 +119,6 @@ Version Control	Git & GitHub
 CI/CD	GitHub Actions
 Documentation	Markdown (.md)
 
-Author
+Edita
 QA / Software Testing Student – BIT Academy
 2025
